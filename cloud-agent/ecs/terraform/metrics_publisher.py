@@ -101,7 +101,7 @@ def _recommended_capacity(
     max_capacity,
 ):
     if connected == 0:
-        return max(min_capacity, service_capacity["desired"])
+        return min(max(min_capacity, service_capacity["desired"]), max_capacity)
 
     current_capacity = max(service_capacity["desired"], service_capacity["running"], connected)
     idle_shortfall = max(target_idle_workers - idle, 0)
